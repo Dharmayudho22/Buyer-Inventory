@@ -10,7 +10,7 @@ const ErrorHandlerMiddleware = require('./middlewares/ErrorHandler');
 const {receiveOrderNotifications} = require('./MessageBroker');
 
 const app = express();
-const port = 6000;
+const port = 5500;
 
 app.use(session({
   secret: 'Service',

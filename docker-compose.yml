@@ -1,0 +1,13 @@
+version: '3'
+services:
+  service_seller:
+    build: .
+    ports:
+      - "5500:5500"
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+    image: "rabbitmq:management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
