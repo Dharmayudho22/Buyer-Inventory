@@ -5,8 +5,9 @@ const router = express.Router();
 
 const OrderValidation = require('../middlewares/validation/order/OrderValidation');
 
-const { orderItem } = require('../controllers');
+const { orderItem, getBarang } = require('../controllers');
 
+router.get('/barang', authenticateJWT, getBarang);
 router.post('/order', authenticateJWT , OrderValidation ,orderItem);
 
 

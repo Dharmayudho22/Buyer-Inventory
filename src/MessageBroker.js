@@ -2,8 +2,8 @@ const amqp = require('amqplib');
 
 const sendOrderNotification = async (messageOrder) => {
   const queue = 'order_notifications';
-  //const connection = await amqp.connect('amqp://172.17.0.3:5672'); 
-  const connection = await amqp.connect('amqp://localhost'); 
+  const connection = await amqp.connect('amqp://172.17.0.2:5672'); 
+  //const connection = await amqp.connect('amqp://localhost'); 
   const channel = await connection.createChannel();
 
   await channel.assertQueue(queue, {
@@ -22,8 +22,8 @@ const sendOrderNotification = async (messageOrder) => {
 
 async function receiveOrderNotifications() {
   try {
-    //const connection = await amqp.connect('amqp://172.17.0.3:5672');
-    const connection = await amqp.connect('amqp://localhost');
+    const connection = await amqp.connect('amqp://172.17.0.2:5672');
+    //const connection = await amqp.connect('amqp://localhost');
     const channel = await connection.createChannel();
 
     const queue = 'confirm_notifications';

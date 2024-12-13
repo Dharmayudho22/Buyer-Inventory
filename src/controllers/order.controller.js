@@ -70,8 +70,27 @@ const orderItem = async (req, res, next) => {
   }
 };
 
+const getBarang = async (req, res, next) => {
+  try {
+    const barang = await prisma.barang.findMany({
+    });
+
+    if (!barang) {
+      return res.status(404).json({
+        message: "Barang not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Success",
+      data: barang, 
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
 
 
 module.exports = {
-  orderItem,
+  orderItem, getBarang
 };
